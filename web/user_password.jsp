@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  db.User: Andy
+  User: Andy
   Date: 8/3/2019
-  Time: 1:27 PM
+  Time: 3:30 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-<h1> User  ${name} was found in table</h1>
+<form method="POST" action="hello">
+    Name:<input type = "text" name = "user"> <br>
+    Password:<input type = "text" password = "pasword"> <br>
+    <input type = "submit" value="submit">
+</form>
 </body>
 </html>

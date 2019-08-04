@@ -1,6 +1,14 @@
 package db;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
+@NamedQueries({
+        @NamedQuery(
+                name = "find_by_name",
+                query ="select s from User s where user = :user"
+        )
+})
 
 @Entity
 @Table(name="user")
@@ -30,15 +38,14 @@ public class User {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "produs_generator")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produs_generator")
     private int id;
 
     @Column(name = "user", unique = true, length = 10)
     private String user;
 
 
-
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
     @Override
@@ -48,5 +55,20 @@ public class User {
                 ", user='" + user + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    @Entity
+    @Table(name = "user")
+    public class user implements Serializable {
+
+        private static final String PRODUS_SEQUENCE = "user_id_sequence";
+
+        public user() {
+        }
+
+        public String getUserSequence() {
+            return PRODUS_SEQUENCE;
+        }
+
     }
 }
