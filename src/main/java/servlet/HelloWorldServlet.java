@@ -1,4 +1,7 @@
 package servlet;
+import db.User;
+import db.UserNameCreator;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+
 @WebServlet (name="HelloServlet", urlPatterns = "/hello")
 public class HelloWorldServlet extends HttpServlet {
 
@@ -15,11 +19,18 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request,
                       HttpServletResponse response) throws IOException {
+        UserNameCreator userNameCreator  = new UserNameCreator();
+        User user = new User();
+        user.setUser("Andu");
+        user.setPassword("1234");
+        userNameCreator.insertProdus(user);
         PrintWriter out= new PrintWriter(response.getWriter());
         out.println("<html><head><title>Hello world </title><head>");
         out.println("<body>Hello world at "+new Date());
         out.println("</body></html>");
+
         out.close();
+
     }
     @Override
     public void doPost(HttpServletRequest request,

@@ -10,5 +10,6 @@
         <property name="hibernate.connection.password">root</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.default_schema">public</property>
+        <mapping class="db.User"/>
     </session-factory>
 </hibernate-configuration>
